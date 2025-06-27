@@ -44,7 +44,7 @@ SPI_BITRATE = 8000
 
 
 #==========================================================================
-# FUNCTION (APP)
+# FUNCTIONS (API)
 #==========================================================================
 APP_NAME = "com.totalphase.promact_is"
 def dev_open (ip):
@@ -236,6 +236,8 @@ def SPI_Write_Hex_Array(ip, conn, channel, hex_array):
     # Close the device and exit
     dev_close(pm, conn, channel)
 
+
+
 #==========================================================================
 # MAIN PROGRAM
 #==========================================================================
@@ -243,6 +245,6 @@ def SPI_Write_Hex_Array(ip, conn, channel, hex_array):
 #hex_array0 = [0xA0, 0xA0, 0xFF, 0xFF, 0x00, 0x0E]
 hex_array1 = [0xA0A0FFFF000E]
 
-SPI_Write_Hex_Array("10.1.67.185", 0, HANDLER ,[0xAAAAF0F0])
+SPI_Write_Hex_Array("10.1.66..45", 0, HANDLER ,[0xAAAAF0F0])
 
 
