@@ -1,0 +1,26 @@
+                     Total Phase Promira Software
+                     ----------------------------
+
+Changes for v1.60 (2022-09-30)
+------------------------------
+- Added support for Apple M1
+
+
+Changes for v1.50 (2022-03-25)
+------------------------------
+- Added support for ARM Linux
+- Added support for Python 3.9+
+- Improved device detection
+
+
+Changes for v1.40 (2019-10-16)
+------------------------------
+- Added promact_is.dll and promact_is.so
+- Examples use Python 3 by default
+- Support for Python 3.2-3.8 and 2.5-2.7
+
+
+Changes for v1.38 (2017-12-13)
+------------------------------
+- Added Support for Python 3
+- API bindings support Python 2.5-3.6

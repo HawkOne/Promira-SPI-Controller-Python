@@ -1,0 +1,133 @@
+                  Total Phase Promira Sample Code
+                  ----------------------------------
+
+Contents
+--------
+c/       - Examples using C/C++ API
+python/  - Python script examples
+csharp/  - C# examples (Only for Windows)
+vb.net/  - Visual Basic .NET examples (Windows only)
+
+
+Instructions
+------------
+Each individual examples directory has a README.txt which generally
+describes how to run the examples given.  Please see those files for
+more details.
+
+Every example is relatively short and well-commented.  The
+application developer is referred to the source code of the examples
+for detailed information on how each example operates.
+
+If the device communicates with a 3rd party device, the target power
+pins are enabled in each example.
+
+
+API Features
+------------
+For a detailed explanation of the API features and constructs, please
+refer to the Promira datasheet.  For a quick overview on the
+differences in API syntax between languages, refer to the README.txt
+found in the Promira Software API package containing the Rosetta
+Language Bindings.  The Promira datasheet and Software API package
+are available on the Total Phase website.
+
+
+Short Description
+-----------------
+* detect          - Detect Promira platforms attached to the system.
+
+* lights          - Flash LEDs attached to a Philips PCA9554D I/O
+  lights_queue      port expander as found on the Activity Board.
+
+* i2c_eeprom      - Read from or write to an I2C serial EEPROM, such
+                    as the Atmel AT24C02 on the Activity Board.
+
+* spi_eeprom      - Read from or write to an SPI serial EEPROM, such
+                    such as the Atmel AT25080A found on the Activity
+                    Board.
+
+* i2c_file        - Demonstrate the I2C slave functionality of
+  i2c_slave         the Promira platform.  This example requires two
+                    Promira platforms.  First run i2c_slave with
+                    the first Promira platform to wait for a new slave
+                    transmission.  Then, in another shell, run
+                    aai2c_file to transmit a binary file with the
+                    second Promira platform.
+
+* spi_file        - Demonstrate the SPI slave functionality of
+  spi_slave         the Promira platform.  This example requires two
+                    Promira platforms.  First run spi_slave with
+                    the first Promira platform to wait for a new slave
+                    transmission.  Then, in another shell, run
+                    aaspi_file to transmit a binary file with the
+                    second Promira platform.
+
+* gpio            - Perform some simple GPIO tests with a single
+                    Promira platform.  The results can be verified
+                    using an oscilloscope or multimeter.
+
+* espi_generator  - Simulate eSPI transactions using the Promira platform.
+  espi_simulator    espi_generator is an example code that generates
+                    eSPI traffic and espi_simulator includes basic eSPI
+                    functions used by espi_generator example.
+                    These are available only in python.
+
+* spi_program     - Program SPI EEPROM (AT25256/AT25080) with data from an
+                    Intel Hex Record file
+
+* spi_n25q        - Read from or write to Micron family (N25Q) SPI flash
+                    memory devices.
+
+
+Example
+-------
+
+*** i2c_eeprom ***
+
+Refer to specific language directory README.txt to see how to run
+this example under the desired programming language.
+
+
+> detect
+1 device(s) found:
+    ip = 192.168.1.10   (avail) (2222-333333)
+
+
+> i2c_eeprom 192.168.1.10 400 zero 0x50 0 32
+Bitrate set to 400 kHz
+Zeroed EEPROM
+
+
+> i2c_eeprom 192.168.1.10 400 read 0x50 0 32
+Bitrate set to 400 kHz
+
+Data read from device:
+0000:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00
+0010:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00
+
+
+> i2c_eeprom 192.168.1.10 400 write 0x50 0 32
+Bitrate set to 400 kHz
+Wrote to EEPROM
+
+
+> i2c_eeprom 192.168.1.10 400 read 0x50 0 32
+Bitrate set to 400 kHz
+
+Data read from device:
+0000:  01 02 03 04 05 06 07 08  09 0a 0b 0c 0d 0e 0f 10
+0010:  11 12 13 14 15 16 17 18  19 1a 1b 1c 1d 1e 1f 00
+
+
+> i2c_eeprom 192.168.1.10 400 zero 0x50 8 4
+Bitrate set to 400 kHz
+Zeroed EEPROM
+
+
+> i2c_eeprom 192.168.1.10 400 read 0x50 0 32
+Bitrate set to 400 kHz
+
+Data read from device:
+0000:  01 02 03 04 05 06 07 08  00 00 00 00 0d 0e 0f 10
+0010:  11 12 13 14 15 16 17 18  19 1a 1b 1c 1d 1e 1f 00
