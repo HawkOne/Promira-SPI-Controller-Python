@@ -45,7 +45,7 @@ The MISO output follows the MOSI with 128 clocks delay
 
 SPI_Frequency = 1000                # Frequency in KHz
 #SPI_LS_Voltage = 0.9               # Voltage Level of the Level-Shifter
-SPI_LS_Voltage = 0.9                # Voltage Level of the Level-Shifter
+SPI_LS_Voltage = 3.3                # Voltage Level of the Level-Shifter
 SPI_SS_MASK = 1                     # BitMask for Slave Selection (We will use Slave 1 (Pin 9 - SS0)
 SPI_SS_MASK_Active = 0x00           #(All slaves are active low)
 SPI_SS_Delay = 0.001                # 1 Millisecond between CS and Data
@@ -577,7 +577,10 @@ if ( HANDLER_North != 0) :
     ps_app_configure(channel, PS_APP_CONFIG_SPI)
 
     # Select Target Power supply voltage level.
-    ps_phy_target_power(channel, PS_PHY_TARGET_POWER_TARGET1_3V)
+    ps_phy_target_power(channel, SPI_TARGET_POWER_LEVEL)
+    if(SPI_TARGET_POWER_LEVEL==PS_PHY_TARGET_POWER_TARGET1_3V) : print(f"{name} Target Power Supply set to 3.3V")
+    if(SPI_TARGET_POWER_LEVEL==PS_PHY_TARGET_POWER_NONE) : print(f"{name} Target Power Supply set to 0V")  
+    if(SPI_TARGET_POWER_LEVEL==PS_PHY_TARGET_POWER_TARGET1_5V) : print(f"{name} Target Power Supply set to 5V")
 
     # Configure the power of output signal.
     #a = ps_phy_level_shift (HANDLER_South, 0.9)
@@ -610,7 +613,10 @@ if ( HANDLER_South != 0) :
     ps_app_configure(channel, PS_APP_CONFIG_SPI)
 
     # Select Target Power supply voltage level.
-    ps_phy_target_power(channel, PS_PHY_TARGET_POWER_TARGET1_3V)
+    ps_phy_target_power(channel, SPI_TARGET_POWER_LEVEL)
+    if(SPI_TARGET_POWER_LEVEL==PS_PHY_TARGET_POWER_TARGET1_3V) : print(f"{name} Target Power Supply set to 3.3V")
+    if(SPI_TARGET_POWER_LEVEL==PS_PHY_TARGET_POWER_NONE) : print(f"{name} Target Power Supply set to 0V")  
+    if(SPI_TARGET_POWER_LEVEL==PS_PHY_TARGET_POWER_TARGET1_5V) : print(f"{name} Target Power Supply set to 5V")
 
     # Configure the power of output signal.
     #a = ps_phy_level_shift (HANDLER_South, 0.9)
